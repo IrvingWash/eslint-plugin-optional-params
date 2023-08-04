@@ -1,7 +1,7 @@
-import { optionalParams } from './optional-params';
+import { maxOptionalParams } from './optional-params';
 
 export = {
 	rules: {
-		'optional-params': optionalParams,
+		'max-optional-params': maxOptionalParams,
 	},
 } as unknown;

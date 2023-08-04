@@ -1,7 +1,7 @@
 import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils';
 import { RuleContext } from '@typescript-eslint/utils/dist/ts-eslint';
 
-export const optionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
+export const maxOptionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 	meta: {
 		type: 'problem',
 		messages: {
