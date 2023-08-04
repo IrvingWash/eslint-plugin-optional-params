@@ -1,14 +1,15 @@
-import { ESLintUtils } from '@typescript-eslint/utils/dist';
+import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils';
+import { RuleContext } from '@typescript-eslint/utils/dist/ts-eslint';
 
 export const optionalParams = ESLintUtils.RuleCreator.withoutDocs({
 	meta: {
+		type: 'problem',
 		messages: {
-			tooManyOptionalParams: "Only '{{quantity}}' optional params are allowed",
+			tooManyOptionalParams: "Only '{{count}}' optional params are allowed",
 		},
-		hasSuggestions: true,
 		schema: {
 			type: 'array',
-			minItems: 0,
+			minItems: 1,
 			maxItems: 1,
 			items: [
 				{
@@ -17,10 +18,36 @@ export const optionalParams = ESLintUtils.RuleCreator.withoutDocs({
 				},
 			],
 		},
-		type: 'problem',
 	},
-	create(context) {
-		return {};
+	create(context: Readonly<RuleContext<'tooManyOptionalParams', [number]>>) {
+		const allowedOptionalParamCount = context.options[0];
+
+		return {
+			FunctionDeclaration(node): void {
+				let optionalParamCount = 0;
+
+				for (const param of node.params) {
+					if (optionalParamCount >= allowedOptionalParamCount) {
+						context.report({
+							messageId: 'tooManyOptionalParams',
+							node,
+							data: {
+								count: allowedOptionalParamCount,
+							},
+						});
+
+						break;
+					}
+
+					if (
+						param.type === AST_NODE_TYPES.Identifier
+						&& param.optional
+					) {
+						optionalParamCount += 1;
+					}
+				}
+			},
+		};
 	},
-	defaultOptions: [],
+	defaultOptions: [1],
 });
