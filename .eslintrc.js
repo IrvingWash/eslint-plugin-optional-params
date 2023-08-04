@@ -8,7 +8,6 @@ module.exports = {
 	ignorePatterns: [
 		'.eslintrc.js',
 		'dist',
-		'esbuild.mjs',
 	],
 	plugins: ['@typescript-eslint/eslint-plugin'],
 	root: true,
