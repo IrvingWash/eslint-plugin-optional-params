@@ -1,6 +1,6 @@
 import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils';
 
-import { FunctionesqueNode, MaxOptionalParamsContext } from './objects';
+import { FunctionesqueNode, MaxOptionalParamsContext } from '../../objects';
 
 export const maxOptionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 	meta: {

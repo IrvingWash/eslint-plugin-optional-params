@@ -1,4 +1,4 @@
-import { maxOptionalParams } from './max-optional-params';
+import { maxOptionalParams } from './rules/max-optional-params/max-optional-params';
 
 export = {
 	rules: {
