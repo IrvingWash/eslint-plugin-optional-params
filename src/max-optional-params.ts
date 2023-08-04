@@ -51,9 +51,11 @@ function checkOptionalParamCount(
 ): void {
 	const allowedOptionalParamCount = context.options[0];
 
-	const optionalParams = node.params.filter((param) => param.type === AST_NODE_TYPES.Identifier && param.optional);
+	const optionalParamsCount = node.params
+		.filter((param) => param.type === AST_NODE_TYPES.Identifier && param.optional)
+		.length;
 
-	if (optionalParams.length <= allowedOptionalParamCount) {
+	if (optionalParamsCount <= allowedOptionalParamCount) {
 		return;
 	}
 
