@@ -1,11 +1,11 @@
 import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils';
 import { RuleContext } from '@typescript-eslint/utils/dist/ts-eslint';
 
-export const optionalParams = ESLintUtils.RuleCreator.withoutDocs({
+export const optionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 	meta: {
 		type: 'problem',
 		messages: {
-			tooManyOptionalParams: "Only '{{count}}' optional params are allowed",
+			tooManyOptionalParams: 'Only {{count}} optional params are allowed',
 		},
 		schema: {
 			type: 'array',

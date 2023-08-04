@@ -4,4 +4,4 @@ export = {
 	rules: {
 		'optional-params': optionalParams,
 	},
-}
+} as unknown;
