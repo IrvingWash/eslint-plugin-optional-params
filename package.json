@@ -10,7 +10,7 @@
 	"scripts": {
 		"lint": "eslint \"src/**/*\" --max-warnings=0",
 		"check-ts": "tsc --noEmit",
-		"build": "tsc --project tsconfig.build.json",
+		"build": "rm -rf dist && tsc --project tsconfig.build.json",
 		"prepare": "husky install"
 	},
 	"author": "WI",

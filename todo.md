@@ -1,0 +1,1 @@
+- Add esbuild for minification
