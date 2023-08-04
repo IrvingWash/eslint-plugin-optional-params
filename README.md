@@ -8,10 +8,15 @@ Works with:
 - class methods
 - class properties (class methods declared as arrow functions)
 - function type declarations
-- function declaration within interfaces
+- function declarations within interfaces
 - arrow function declarations within interfaces
 - abstract methods
 - abstract properties (abstract methods declared as arrow functions)
+
+## Installation
+```bash
+npm i -D eslint-plugin-optional-params
+```
 
 ## Usage
 ```js
@@ -19,7 +24,7 @@ Works with:
 module.exports = {
 	// ...
 
-	// The 'eslint-plugin' part of the name can be avoided her.
+	// The 'eslint-plugin' part of the name can be omitted here.
 	// Either 'eslint-plugin-optional-params' or just 'optional-params' must be used.
 	plugins: [/* other plugins */, 'optional-params']
 	rules: {
