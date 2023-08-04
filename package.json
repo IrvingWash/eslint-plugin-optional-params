@@ -3,6 +3,9 @@
 	"version": "0.0.1",
 	"description": "A ESLint plugin for linting optional parameters",
 	"main": "dist/index.js",
+	"files": [
+		"dist"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/IrvingWash/eslint-plugin-optional-params.git"
