@@ -1,2 +1,0 @@
-- Add esbuild for minification
-- Add readme
