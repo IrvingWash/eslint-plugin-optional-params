@@ -20,34 +20,54 @@ export const optionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 		},
 	},
 	create(context: Readonly<RuleContext<'tooManyOptionalParams', [number]>>) {
-		const allowedOptionalParamCount = context.options[0];
-
 		return {
 			FunctionDeclaration(node): void {
-				let optionalParamCount = 0;
-
-				for (const param of node.params) {
-					if (optionalParamCount >= allowedOptionalParamCount) {
-						context.report({
-							messageId: 'tooManyOptionalParams',
-							node,
-							data: {
-								count: allowedOptionalParamCount,
-							},
-						});
-
-						break;
-					}
-
-					if (
-						param.type === AST_NODE_TYPES.Identifier
-						&& param.optional
-					) {
-						optionalParamCount += 1;
-					}
-				}
+				checkOptionalParamCount(node, context);
+			},
+			FunctionExpression(node): void {
+				checkOptionalParamCount(node, context);
+			},
+			ArrowFunctionExpression(node): void {
+				checkOptionalParamCount(node, context);
+			},
+			TSEmptyBodyFunctionExpression(node): void {
+				checkOptionalParamCount(node, context);
+			},
+			TSFunctionType(node): void {
+				checkOptionalParamCount(node, context);
+			},
+			TSMethodSignature(node): void {
+				checkOptionalParamCount(node, context);
 			},
 		};
 	},
 	defaultOptions: [1],
 });
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function checkOptionalParamCount(node: any, context: any): void {
+	const allowedOptionalParamCount = context.options[0];
+
+	let optionalParamCount = 0;
+
+	for (const param of node.params) {
+		if (optionalParamCount >= allowedOptionalParamCount) {
+			context.report({
+				messageId: 'tooManyOptionalParams',
+				node,
+				data: {
+					count: allowedOptionalParamCount,
+				},
+			});
+
+			break;
+		}
+
+		if (
+			param.type === AST_NODE_TYPES.Identifier
+			&& param.optional
+		) {
+			optionalParamCount += 1;
+		}
+	}
+}
