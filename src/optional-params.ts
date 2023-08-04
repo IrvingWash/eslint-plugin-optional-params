@@ -1,5 +1,6 @@
 import { AST_NODE_TYPES, ESLintUtils } from '@typescript-eslint/utils';
-import { RuleContext } from '@typescript-eslint/utils/dist/ts-eslint';
+
+import { FunctionesqueNode, MaxOptionalParamsContext } from './objects';
 
 export const maxOptionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 	meta: {
@@ -19,7 +20,7 @@ export const maxOptionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 			],
 		},
 	},
-	create(context: Readonly<RuleContext<'tooManyOptionalParams', [number]>>) {
+	create(context: MaxOptionalParamsContext) {
 		return {
 			FunctionDeclaration(node): void {
 				checkOptionalParamCount(node, context);
@@ -44,8 +45,10 @@ export const maxOptionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 	defaultOptions: [1],
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function checkOptionalParamCount(node: any, context: any): void {
+function checkOptionalParamCount(
+	node: FunctionesqueNode,
+	context: MaxOptionalParamsContext
+): void {
 	const allowedOptionalParamCount = context.options[0];
 
 	let optionalParamCount = 0;
