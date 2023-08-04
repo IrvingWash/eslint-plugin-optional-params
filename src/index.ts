@@ -1,3 +1,5 @@
+import { optionalParams } from './optional-params';
+
 export = {
-	'test': 'best',
+	'optional-params': optionalParams,
 }

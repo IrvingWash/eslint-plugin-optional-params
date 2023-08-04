@@ -25,7 +25,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-interface': ['off'],
 		'no-trailing-spaces': ['error'],
 		'no-multiple-empty-lines': ['error', { max: 1 }],
-		'quotes': ['error', 'single'],
+		'quotes': ['error', 'single', { avoidEscape: true }],
 		"space-infix-ops": ["error"],
 		'space-in-parens': ['error', 'never'],
 		'space-before-function-paren': ['error', 'never'],
