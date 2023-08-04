@@ -7,9 +7,8 @@ module.exports = {
 	},
 	ignorePatterns: [
 		'.eslintrc.js',
-		'jest.config.js',
 		'dist',
-		'src/tests/test-app',
+		'esbuild.mjs',
 	],
 	plugins: ['@typescript-eslint/eslint-plugin'],
 	root: true,

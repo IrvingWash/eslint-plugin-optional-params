@@ -10,7 +10,8 @@
 	"scripts": {
 		"lint": "eslint \"src/**/*\" --max-warnings=0",
 		"check-ts": "tsc --noEmit",
-		"build": "rm -rf dist && tsc --project tsconfig.build.json",
+		"build-ts": "rm -rf dist && tsc --project tsconfig.build.json",
+		"build-es": "node ./esbuild.mjs",
 		"prepare": "husky install"
 	},
 	"author": "WI",
@@ -19,6 +20,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.59.2",
 		"@typescript-eslint/parser": "^5.59.2",
 		"@typescript-eslint/utils": "^5.61.0",
+		"esbuild": "^0.18.17",
 		"eslint": "^8.39.0",
 		"husky": "^8.0.0",
 		"tsx": "^3.12.7",
