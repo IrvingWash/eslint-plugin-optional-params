@@ -6,7 +6,7 @@ export const maxOptionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 	meta: {
 		type: 'problem',
 		messages: {
-			tooManyOptionalParams: 'Only {{count}} optional params are allowed',
+			tooManyOptionalParams: 'Only {{count}} optional param(s) are allowed',
 		},
 		schema: {
 			type: 'array',
