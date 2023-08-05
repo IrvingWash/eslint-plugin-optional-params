@@ -6,7 +6,7 @@ export const maxOptionalParams: unknown = ESLintUtils.RuleCreator.withoutDocs({
 	meta: {
 		type: 'problem',
 		messages: {
-			tooManyOptionalParams: 'Only {{count}} optional param(s) are allowed',
+			tooManyOptionalParams: 'Function has too many optional params ({{actualOptionalParams}}). Allowed maximum: {{maxOptionalParams}}',
 		},
 		schema: {
 			type: 'array',
@@ -63,7 +63,8 @@ function checkOptionalParamCount(
 		messageId: 'tooManyOptionalParams',
 		node,
 		data: {
-			count: allowedOptionalParamCount,
+			actualOptionalParams: optionalParamCount,
+			maxOptionalParams: allowedOptionalParamCount,
 		},
 	});
 }
