@@ -18,23 +18,37 @@ Works with:
 npm i -D eslint-plugin-optional-params
 ```
 
+## Rules
+- `max-optional-params`: controls the count of optional params a function may have.
+  - Example:
+    ```ts //
+    'optional-params/max-optional-params': ['error', 1]
+
+    // ❌
+    // Only 1 optional param(s) are allowed (eslint)
+    function buildMech(head: Head, core: Core, arms?: Arm[], legs?: Leg[]): Mech
+
+    // ✅
+    // A fix
+    function buildMech(params: { head: Head, core: Core, arms?: Arm[], legs?: Leg[] }): Mech
+    ```
+  - When to use it:  
+    The rule must be used if multiple optional params are dissatisfactory.  
+    To pass a succeeding optional param a redundant `undefined` value should be passed as an argument for the preceding param.
+
+
 ## Usage
+- The plugin must be added to the `plugins` array in a `.eslintrc.*` config.
+- the `eslint-plugin` part of the name can be omitted.
 ```js
 // .eslintrc.js
 module.exports = {
-	// ...
-
-	// The 'eslint-plugin' part of the name can be omitted here.
-	// Either 'eslint-plugin-optional-params' or just 'optional-params' must be used.
-	plugins: [/* other plugins */, 'optional-params']
-	rules: {
-		// ...
-
-		// The part before the slash must match the name that was used in the 'plugins' array.
-		// The second element of the array stands for the maximum optional params count.
-		'optional-params/max-optional-params': ['error', 2],
-	}
-
-	// ...
+  // ...
+  plugins: [/* other plugins */, 'optional-params']
+  rules: {
+    // ...
+    'optional-params/max-optional-params': ['error', 2],
+  }
+  // ...
 }
 ```
