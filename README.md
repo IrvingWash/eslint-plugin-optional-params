@@ -22,7 +22,7 @@ npm i -D eslint-plugin-optional-params
 - `max-optional-params`: controls the count of optional params a function may have.
   - Example:
     ```ts
-		// 'optional-params/max-optional-params': ['error', 1]
+    // 'optional-params/max-optional-params': ['error', 1]
 
     // ❌
     // Only 1 optional param(s) are allowed (eslint)
