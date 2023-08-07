@@ -8,8 +8,8 @@ Works with:
 - class methods
 - class properties (class methods declared as arrow functions)
 - function type declarations
-- function declarations within interfaces
-- arrow function declarations within interfaces
+- function type declarations within interfaces
+- arrow function type declarations within interfaces
 - abstract methods
 - abstract properties (abstract methods declared as arrow functions)
 
